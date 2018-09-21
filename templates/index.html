@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo App by Mert Yachting</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+
+    <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+  </ol>
+</head>
+<body>
+<div class="container">
+    <h1>Todo List</h1>
+    <div>Look for a Todo Item:
+        <form action="{{ url_for('search') }}" method="POST">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <input type="submit" value="Search" button class="btn btn-outline-secondary" type="button"></button>
+                </div>
+                <input type="text" name="search" class="form-control" placeholder="Enter ToDoItem" aria-label=""
+                       aria-describedby="basic-addon1">
+
+            </div>
+        </form>
+    </div>
+
+    <div>Add a new todo item:
+        <form action="{{ url_for('add') }}" method="POST">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+
+                    <input type="submit" value="Add Item" button class="btn btn-outline-secondary"
+                           type="button"></button>
+                </div>
+                <input type="text" name="todoitem" class="form-control" placeholder="Enter ToDoItem" aria-label=""
+                       aria-describedby="basic-addon1">
+            </div>
+        </form>
+
+
+        <div>
+            <h2>Incomplete Items</h2>
+
+            <ul class="list-group">
+                {% for todo in incomplete %}
+                    <li class="list-group-item" style="font-size: 30pt">{{ todo.text }} <a
+                            href="{{ url_for('complete', id=todo.id) }}" class="btn btn-success active" role="button"
+                            aria-pressed="true">Check</a>
+                        <a href="{{ url_for('delete', id=todo.id) }}" class="btn btn-danger active" role="button"
+                           aria-pressed="true">Delete</a></li>
+                {% endfor %}
+            </ul>
+
+
+            <h2>Completed Items</h2>
+            <ul class="list-group">
+                {% for todo in complete %}
+                    <li class="list-group-item disabled" style="font-size: 30pt">{{ todo.text }} <a
+                            href="{{ url_for('delete', id=todo.id) }}" class="btn btn-danger active" role="button"
+                            aria-pressed="true">Delete</a></li></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
