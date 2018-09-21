@@ -1,5 +1,4 @@
 # TodoList_Flask
-Benotete Übung 2
 
 Web-Application with Flask
 
