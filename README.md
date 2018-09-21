@@ -64,4 +64,3 @@ Acknowledgments
 https://getbootstrap.com/docs/4.1/getting-started/contents/
 https://www.udemy.com/python-and-flask-bootcamp-create-websites-using-flask/learn/v4/content
 
-Prof.Dr.Zhang Slides 09-web (v.2018-06-12), blog simple (v.2018-06-05) Datei, blog with list Datei, blog sqlalchemy (v. 2018-06-15) Datei
